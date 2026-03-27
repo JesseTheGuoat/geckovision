@@ -1,6 +1,9 @@
 from matplotlib import pyplot #was ognan use but I ended up looking like a crappy powerpoint slideshow :> (transitions and allllll)
 import cv2 as cv
 
+#ok so now time to USE CASCADATION CLASSIFIERATION
+cascadation = cv.CascadeClassifier("cascaaaaaades/haarcascade_smile.xml")
+
 #try and probably fail to open the video feeeed bc me is donut
 cap = cv.VideoCapture(0) #Select da camera (if youse has 2 cameras plugged in, then you could also use the second (1) or not bc the second is CRINGE and it commits ARSON on EVERYTHING and is a GENERAL I CANT SPELL THE WORD BUT YOU GET THE IDEA)
 if not cap.isOpened():
@@ -18,10 +21,16 @@ while True:
         break
 
     # OK THIS IS MEANT TO MAKE A COLOR FILTER BUT IT JUST MAKES ME INTO A SMURF IFAOIFHEIEJKFWFEI
-    colorrr = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
+    greyyyyson = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+
+    #MMMMM DETECTIONSSSS YUMMM AND EATTTT BACONATORRRR
+    theGoods = cascadation.detectMultiScale(greyyyyson, minSize=(20, 20)) #minimum detection size: small chungus
+
+    for (x, y, wideee, highh) in theGoods:
+        cv.circle(img=greyyyyson, center=(x, y), radius=5, color=(255, 0, 0), thickness=-1)
 
     # Display the resulting frame (frame name, then the actual thingymabop)
-    cv.imshow("something or the other", colorrr)
+    cv.imshow("something or the other", greyyyyson)
 
     #I think this nukes your dog or smth idk
     if cv.waitKey(1) == ord('q'):
