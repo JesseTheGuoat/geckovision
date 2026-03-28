@@ -4,7 +4,7 @@ import geckovision.identifier.generalFinder as imsolonely
 cascadation = cv.CascadeClassifier("cascaaaaaades/dalookeyboidetector.xml")
 
 def getAnnotatedFrame(frame):
-    imsolonely.getAnnotatedFrame(frame=frame, mmmcasperthefriendlyghost=cascadation)
+    return imsolonely.getAnnotatedFrame(frame=frame, mmmcasperthefriendlyghost=cascadation)
 
 def getEyeDetectionPoints(frame):
-    imsolonely.getDetectionPoints(frame=frame, mmmcasperthefriendlyghost=cascadation)
+    return imsolonely.getDetectionPoints(frame=frame, mmmcasperthefriendlyghost=cascadation)
