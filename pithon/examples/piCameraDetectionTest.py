@@ -22,7 +22,7 @@ def generate():
         theGoods = cascadation.detectMultiScale(filteredFrame, minSize=(40, 40))
         for (x, y, wideee, highh) in theGoods:
             cv.circle(img=filteredFrame, center=(int(x+(wideee/2)), int(y+(highh/2))), radius=5, color=(255, 0, 0), thickness=-1)
-        _, buffer = cv2.imencode('.jpg', filteredFrame)
+        _, buffer = cv.imencode('.jpg', filteredFrame)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
 
@@ -31,7 +31,7 @@ def video():
     return Response(generate(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-app.run(host='0.0.0.0', port=5000, threading = True)
+app.run(host='0.0.0.0', port=5000)
 
 # #main loop :>
 # while True:
